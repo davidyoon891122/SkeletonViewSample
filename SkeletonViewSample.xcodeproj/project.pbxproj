@@ -10,9 +10,12 @@
 		493E1E1629DA343700707E3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E1E1529DA343700707E3F /* AppDelegate.swift */; };
 		493E1E1829DA343700707E3F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E1E1729DA343700707E3F /* SceneDelegate.swift */; };
 		493E1E1A29DA343700707E3F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E1E1929DA343700707E3F /* ViewController.swift */; };
-		493E1E1D29DA343700707E3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 493E1E1B29DA343700707E3F /* Main.storyboard */; };
 		493E1E1F29DA343900707E3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 493E1E1E29DA343900707E3F /* Assets.xcassets */; };
 		493E1E2229DA343900707E3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 493E1E2029DA343900707E3F /* LaunchScreen.storyboard */; };
+		493E1E2C29DA353900707E3F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 493E1E2B29DA353900707E3F /* SnapKit */; };
+		493E1E2F29DA355000707E3F /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = 493E1E2E29DA355000707E3F /* SkeletonView */; };
+		493E1E3129DA387600707E3F /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E1E3029DA387600707E3F /* BookCell.swift */; };
+		493E1E3329DA475300707E3F /* BookData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E1E3229DA475300707E3F /* BookData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,10 +23,11 @@
 		493E1E1529DA343700707E3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		493E1E1729DA343700707E3F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		493E1E1929DA343700707E3F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		493E1E1C29DA343700707E3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		493E1E1E29DA343900707E3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		493E1E2129DA343900707E3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		493E1E2329DA343900707E3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		493E1E3029DA387600707E3F /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
+		493E1E3229DA475300707E3F /* BookData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +35,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				493E1E2F29DA355000707E3F /* SkeletonView in Frameworks */,
+				493E1E2C29DA353900707E3F /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +62,24 @@
 		493E1E1429DA343700707E3F /* SkeletonViewSample */ = {
 			isa = PBXGroup;
 			children = (
-				493E1E1529DA343700707E3F /* AppDelegate.swift */,
-				493E1E1729DA343700707E3F /* SceneDelegate.swift */,
+				493E1E2929DA351000707E3F /* Delegate */,
 				493E1E1929DA343700707E3F /* ViewController.swift */,
-				493E1E1B29DA343700707E3F /* Main.storyboard */,
 				493E1E1E29DA343900707E3F /* Assets.xcassets */,
 				493E1E2029DA343900707E3F /* LaunchScreen.storyboard */,
 				493E1E2329DA343900707E3F /* Info.plist */,
+				493E1E3029DA387600707E3F /* BookCell.swift */,
+				493E1E3229DA475300707E3F /* BookData.swift */,
 			);
 			path = SkeletonViewSample;
+			sourceTree = "<group>";
+		};
+		493E1E2929DA351000707E3F /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				493E1E1529DA343700707E3F /* AppDelegate.swift */,
+				493E1E1729DA343700707E3F /* SceneDelegate.swift */,
+			);
+			path = Delegate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +98,10 @@
 			dependencies = (
 			);
 			name = SkeletonViewSample;
+			packageProductDependencies = (
+				493E1E2B29DA353900707E3F /* SnapKit */,
+				493E1E2E29DA355000707E3F /* SkeletonView */,
+			);
 			productName = SkeletonViewSample;
 			productReference = 493E1E1229DA343700707E3F /* SkeletonViewSample.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +130,10 @@
 				Base,
 			);
 			mainGroup = 493E1E0929DA343700707E3F;
+			packageReferences = (
+				493E1E2A29DA353900707E3F /* XCRemoteSwiftPackageReference "SnapKit" */,
+				493E1E2D29DA355000707E3F /* XCRemoteSwiftPackageReference "SkeletonView" */,
+			);
 			productRefGroup = 493E1E1329DA343700707E3F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,7 +150,6 @@
 			files = (
 				493E1E2229DA343900707E3F /* LaunchScreen.storyboard in Resources */,
 				493E1E1F29DA343900707E3F /* Assets.xcassets in Resources */,
-				493E1E1D29DA343700707E3F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +160,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				493E1E3329DA475300707E3F /* BookData.swift in Sources */,
+				493E1E3129DA387600707E3F /* BookCell.swift in Sources */,
 				493E1E1A29DA343700707E3F /* ViewController.swift in Sources */,
 				493E1E1629DA343700707E3F /* AppDelegate.swift in Sources */,
 				493E1E1829DA343700707E3F /* SceneDelegate.swift in Sources */,
@@ -147,14 +171,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		493E1E1B29DA343700707E3F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				493E1E1C29DA343700707E3F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		493E1E2029DA343900707E3F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -292,7 +308,7 @@
 				INFOPLIST_FILE = SkeletonViewSample/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -320,7 +336,7 @@
 				INFOPLIST_FILE = SkeletonViewSample/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -358,6 +374,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		493E1E2A29DA353900707E3F /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		493E1E2D29DA355000707E3F /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		493E1E2B29DA353900707E3F /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 493E1E2A29DA353900707E3F /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		493E1E2E29DA355000707E3F /* SkeletonView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 493E1E2D29DA355000707E3F /* XCRemoteSwiftPackageReference "SkeletonView" */;
+			productName = SkeletonView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 493E1E0A29DA343700707E3F /* Project object */;
 }

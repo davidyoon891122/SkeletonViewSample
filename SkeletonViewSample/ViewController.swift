@@ -18,63 +18,96 @@ class ViewController: UIViewController {
         let layout = createLayout()
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.dataSource = self
         
         collectionView.register(BookCell.self, forCellWithReuseIdentifier: BookCell.identifier)
+        collectionView.isSkeletonable = true
         
         return collectionView
     }()
     
-    private var dataSource: UICollectionViewDiffableDataSource<BookSection, BookData>!
+    private var bookInfo = BookData.allItem
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        configureDataSource()
+        configureNavigation()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView.showAnimatedGradientSkeleton()
     }
 }
 
+extension ViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return bookInfo.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCell.identifier, for:  indexPath) as? BookCell else { return UICollectionViewCell() }
+        return cell
+    }
+}
+
+extension ViewController: SkeletonCollectionViewDataSource {
+    func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        return BookCell.identifier
+    }
+    
+    func collectionSkeletonView(_ skeletonView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+}
+
+
 private extension ViewController {
+    func configureNavigation() {
+        navigationItem.title = "SkeletonView"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "arrow.clockwise.circle"),
+            style: .plain,
+            target: self,
+            action: #selector(didTapRefreshButton)
+        )
+    }
+    
     func setupViews() {
-        view.addSubview(collectionView)
-        
-        
+        [
+            collectionView
+        ]
+            .forEach {
+                view.addSubview($0)
+            }
         collectionView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
         }
     }
     
     func createLayout() -> UICollectionViewCompositionalLayout {
-        let configure = UICollectionViewCompositionalLayoutConfiguration()
-        configure.interSectionSpacing = 0
-        
         let layout = UICollectionViewCompositionalLayout(sectionProvider: { sectionIndex, layoutEnvironment in
             let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(300)))
             let group = NSCollectionLayoutGroup.vertical(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(300)), subitems: [item])
             let section = NSCollectionLayoutSection(group: group)
             
             return section
-        },configuration: configure)
+        })
         
         return layout
     }
     
-    func configureDataSource() {
-        dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, item in
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCell.identifier, for: indexPath) as? BookCell else { return UICollectionViewCell() }
-            
-            return cell
-        })
+    @objc
+    func didTapRefreshButton() {
+        collectionView.showAnimatedGradientSkeleton()
         
-        applySnapshot()
-    }
-    
-    func applySnapshot() {
-        var snapshot = NSDiffableDataSourceSnapshot<BookSection, BookData>()
-        snapshot.appendSections([.main])
-        snapshot.appendItems(BookData.allItem)
-        
-        dataSource.apply(snapshot, animatingDifferences: true)
-        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10) { [weak self] in
+            guard let self = self else { return }
+            self.collectionView.hideSkeleton()
+        }
     }
 }
 

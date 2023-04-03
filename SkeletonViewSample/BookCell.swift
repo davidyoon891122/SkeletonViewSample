@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import SkeletonView
 
 final class BookCell: UICollectionViewCell {
     static let identifier = "BookCell"
@@ -14,8 +15,11 @@ final class BookCell: UICollectionViewCell {
     private lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.borderWidth = 1.0
-        imageView.layer.borderColor = UIColor.lightGray.cgColor
+        imageView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
         imageView.layer.cornerRadius = 40.0
+        imageView.layer.masksToBounds = true
+        
+        imageView.isSkeletonable = true
         
         return imageView
     }()
@@ -25,6 +29,8 @@ final class BookCell: UICollectionViewCell {
         label.font = .systemFont(ofSize: 20, weight: .bold)
         label.textColor = .label
         label.text = "Title"
+        
+        label.isSkeletonable = true
         
         return label
     }()
@@ -36,11 +42,14 @@ final class BookCell: UICollectionViewCell {
         label.text = "Since version 1.30.0, SkeletonView supports XCFrameworks, so if you want to install it as a XCFramework, please use this repo instead."
         label.numberOfLines = 0
         
+        label.isSkeletonable = true
+        
         return label
     }()
     
     private lazy var containerView: UIView = {
         let view = UIView()
+        view.isSkeletonable = true
         [
             profileImageView,
             titleLabel,
@@ -60,7 +69,7 @@ final class BookCell: UICollectionViewCell {
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(offset)
             $0.leading.equalTo(profileImageView.snp.trailing).offset(offset)
-            $0.trailing.equalToSuperview().offset(offset)
+            $0.trailing.equalToSuperview().offset(-offset)
         }
         
         descriptionLabel.snp.makeConstraints {
@@ -76,6 +85,8 @@ final class BookCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
+        self.isSkeletonable = true
+        self.contentView.isSkeletonable = true
         setupViews()
     }
     

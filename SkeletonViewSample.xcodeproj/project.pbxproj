@@ -16,6 +16,8 @@
 		493E1E2F29DA355000707E3F /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = 493E1E2E29DA355000707E3F /* SkeletonView */; };
 		493E1E3129DA387600707E3F /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E1E3029DA387600707E3F /* BookCell.swift */; };
 		493E1E3329DA475300707E3F /* BookData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E1E3229DA475300707E3F /* BookData.swift */; };
+		49B42DD829DB9A6700BA6490 /* BookTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B42DD729DB9A6700BA6490 /* BookTableViewController.swift */; };
+		49B42DDA29DB9B9600BA6490 /* TableBookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B42DD929DB9B9600BA6490 /* TableBookCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		493E1E2329DA343900707E3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		493E1E3029DA387600707E3F /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
 		493E1E3229DA475300707E3F /* BookData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookData.swift; sourceTree = "<group>"; };
+		49B42DD729DB9A6700BA6490 /* BookTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableViewController.swift; sourceTree = "<group>"; };
+		49B42DD929DB9B9600BA6490 /* TableBookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableBookCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +73,8 @@
 				493E1E2329DA343900707E3F /* Info.plist */,
 				493E1E3029DA387600707E3F /* BookCell.swift */,
 				493E1E3229DA475300707E3F /* BookData.swift */,
+				49B42DD729DB9A6700BA6490 /* BookTableViewController.swift */,
+				49B42DD929DB9B9600BA6490 /* TableBookCell.swift */,
 			);
 			path = SkeletonViewSample;
 			sourceTree = "<group>";
@@ -162,8 +168,10 @@
 			files = (
 				493E1E3329DA475300707E3F /* BookData.swift in Sources */,
 				493E1E3129DA387600707E3F /* BookCell.swift in Sources */,
+				49B42DDA29DB9B9600BA6490 /* TableBookCell.swift in Sources */,
 				493E1E1A29DA343700707E3F /* ViewController.swift in Sources */,
 				493E1E1629DA343700707E3F /* AppDelegate.swift in Sources */,
+				49B42DD829DB9A6700BA6490 /* BookTableViewController.swift in Sources */,
 				493E1E1829DA343700707E3F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
